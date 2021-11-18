@@ -24,10 +24,10 @@ function App() {
           <Route path="/menus" element={<Menus />}>
 
           </Route>
-          <Route path="/dishes" element={<Dishes />}>
+          <Route path="/dishes/:menuid" element={<Dishes />}>
 
           </Route>
-          <Route path="/dish-detail" element={<DishDetail />}>
+          <Route path="/dish-detail/:menuid/:dishid" element={<DishDetail />}>
 
           </Route>
         </Routes>

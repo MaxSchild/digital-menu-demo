@@ -2,16 +2,26 @@ import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
 import DishesItem from '../components/DishesItem';
 
-import DUMMY_DATA from "../data/foodData";
+
+import { RootState } from '../store/store'
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Dishes = () => {
-    console.log(DUMMY_DATA[1]);
+    let urlParams = useParams();
+    const menuId = Number(urlParams.menuid)
+    console.log(menuId);
+    const menus = useSelector((state: RootState) => state);
     return (
         <Paper>
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                {DUMMY_DATA[0].dishes.map((item) => {
+                {menus.menu[menuId].dishes.map((item) => {
                     return (
-                        <DishesItem item={item}/>
+                        <Link to={"/dish-detail/" + menuId + "/" + item.id}>
+                            <DishesItem item={item} />
+                        </Link>
+
                     );
                 })}
 

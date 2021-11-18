@@ -3,6 +3,13 @@ import { makeStyles } from '@mui/styles';
 import AddIcon from '@mui/icons-material/Add';
 
 import forkAndKnifeIcon from "./fork-and-knife.svg";
+import { RootState } from '../store/store'
+import { useSelector, useDispatch } from 'react-redux';
+
+import { useParams } from 'react-router';
+
+
+
 
 const useStyles = makeStyles({
     paper: {
@@ -19,14 +26,21 @@ const useStyles = makeStyles({
 
 const DishDetail = () => {
     const classes = useStyles();
+    let urlParams = useParams();
+    const menuId = Number(urlParams.menuid);
+    const dishId = Number(urlParams.dishid);
+    console.log("menuId:", menuId);
+    console.log("dishId:", dishId);
+    const menus = useSelector((state: RootState) => state);
+    const dish = menus.menu[menuId].dishes[dishId];
     return (
         <div>
-            <h1>DishDetail</h1>
-            <div style={{display: "flex"}}>
+            <h1>{dish.title}</h1>
+            <div style={{ display: "flex" }}>
                 <Typography>
-                    Some descriptive Text
+                    {dish.description}
                 </Typography>
-                <Chip label="2,50€"/>
+                <Chip label={dish.price + "€"} />
 
             </div>
             <Paper variant="outlined" className={classes.paper}>
