@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import menuReducer from './menuSlice';
+import exampleReducer from "./exampleSlice";
 
 //TODO redux runs now, but the state settings seem to be broken
 
 const store = configureStore({
   reducer: {
     menu: menuReducer,
+    example: exampleReducer
   },
 });
 
