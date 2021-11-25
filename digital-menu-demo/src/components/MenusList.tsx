@@ -35,28 +35,29 @@ const MenusList = () => {
     //const notification = useSelector((state) => state.ui.notification);
 
     useEffect(() => {
-        dispatch(fetchMenusData());
-        console.log("Sucessfully fetched data!");
-        setIsInitial(false);
-    }, [dispatch, menus]);
+        if (isInitial) {
+            dispatch(fetchMenusData());
+            console.log("Sucessfully fetched data!");
+            setIsInitial(false);
+        }
+    }, [dispatch]);
 
-    const show = false;
+    if (!menus?.menu || isInitial) return <h1>hello</h1>;
+    console.info('menus', menus);
 
-
-
-    /*
     return (
         <Fragment>
-            <p>{menus.menu[0].title}</p>
+            {/* <p>{menus.menu[0].title}</p> */}
             <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                 <nav aria-label="secondary mailbox folders">
                     <List>
-                        {menus.menu.map((item) => {
+                        {menus?.menu?.map((item) => {
+                            console.info('item', item);
                             return (
                                 <ListItem key={item.id} disablePadding>
                                     <ListItemButton>
-                                        <Link to={"/dishes/" + item.id} style={{ textDecoration: 'none' }}>
-                                            <ListItemText primary={item.title} />
+                                        <Link to={'/dishes/' + String(item.id)} style={{ textDecoration: 'none' }}>
+                                            <ListItemText primary={item.title + '-' + item.id} />
                                         </Link>
                                     </ListItemButton>
                                 </ListItem>
@@ -68,18 +69,17 @@ const MenusList = () => {
         </Fragment>
 
     );
-    */
 
-    if (!isInitial){
-        console.log("After fetching data from API", menus);
-    }
-    return (
-        <div>
-            {isInitial && <h1>Hallo</h1>}
-        </div>
+    // if (!isInitial){
+    //     console.log("After fetching data from API", menus);
+    // }
+    // return (
+    //     <div>
+    //         {isInitial && <h1>Hallo</h1>}
+    //     </div>
 
 
-    )
+    // )
 }
 //{!isInitial && <p>{menus.menu[0].title}</p>}
 export default MenusList;

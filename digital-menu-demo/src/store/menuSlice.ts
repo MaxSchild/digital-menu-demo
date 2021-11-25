@@ -5,7 +5,12 @@ import DUMMY_DATA from '../data/foodData';
 interface Menu {
     id: number; title: string;
     dishes:
-    { id: number; title: string; price: number; description: string; imageLink: string; }[];
+    { id: number;
+        title: string;
+        price: number;
+        description: string;
+        imageLink: string;
+    }[];
 };
 
 
@@ -43,6 +48,10 @@ export const menuSlice = createSlice({
     reducers: {
         printIntrada(){ console.log("Intrada") },
         replaceMenus(state, action){
+            // not sure why a return is needed, maybe try to not set the sate but a prop of the state
+            // eg. a menus prop nested in the state
+            // CounterState = { menus: [] }
+            return action.payload;
             state = action.payload;
             console.log("New State: ", action.payload)
             console.log("updated State!")

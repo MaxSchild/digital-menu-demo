@@ -27,7 +27,7 @@ export const exampleSlice = createSlice({
     },
     switchToSecondary: (state) => {
         state.primaryValue = true;
-        state.text = primaryText;
+        state.text = secondaryText;
     },
     switchToPrimaryWithText: (state, action: PayloadAction<string>) => {
         state.primaryValue = true;

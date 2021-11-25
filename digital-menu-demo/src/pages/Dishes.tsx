@@ -11,12 +11,11 @@ import { Link } from 'react-router-dom';
 const Dishes = () => {
     let urlParams = useParams();
     const menuId = Number(urlParams.menuid)
-    console.log(menuId);
-    const menus = useSelector((state: RootState) => state);
+    const menu = useSelector((state: RootState) => state?.menu[menuId]);
     return (
         <Paper>
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                {menus.menu[menuId].dishes.map((item) => {
+                {menu.dishes?.map((item) => {
                     return (
                         <Link to={"/dish-detail/" + menuId + "/" + item.id}>
                             <DishesItem item={item} />

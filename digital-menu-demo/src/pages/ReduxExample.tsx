@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from '../store/store'
 import {exampleActions} from "../store/exampleSlice";
-import { useEffect, useState } from "react-transition-group/node_modules/@types/react";
 
 
 const ReduxExample = () => {
