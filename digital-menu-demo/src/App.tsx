@@ -15,7 +15,6 @@ import DishDetail from './pages/DishDetail';
 import MenuAppBar from './components/MenuAppBar';
 
 import { Fragment } from 'react';
-import ReduxExample from './pages/ReduxExample';
 
 //not relevant for our use case
 let isInitial = true;
@@ -40,9 +39,7 @@ function App() {
           <Route path="/dish-detail/:menuid/:dishid" element={<DishDetail />}>
 
           </Route>
-          <Route path="/redux-example" element={<ReduxExample />}>
-
-          </Route>
+          
         </Routes>
       </Router>
 
